@@ -14,6 +14,13 @@ public enum BridgeOption {
         this.direction = direction;
     }
 
+    public static BridgeOption findByName(String input) {
+        return Arrays.stream(values())
+                .filter(o -> o.name.equals(input))
+                .findFirst()
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 옵션입니다."));
+    }
+
     public static BridgeOption findByDirection(int input) {
         return Arrays.stream(values())
                 .filter(o -> o.direction == input)
@@ -21,8 +28,11 @@ public enum BridgeOption {
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 옵션입니다."));
     }
 
-    public static boolean isCorrect(String input, BridgeOption answer) {
-        // TODO: 사용자 입력과 정답 옵션이 동일한지 비교
-        return false;
+    public int getDirection() {
+        return direction;
+    }
+
+    public String getName() {
+        return name;
     }
 }

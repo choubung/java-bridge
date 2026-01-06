@@ -25,6 +25,14 @@ public class Bridge {
         return information;
     }
 
+    public boolean isCorrect(String move, int position) {
+        // 사용자의 position번째 입력이 정답이면
+        if (BridgeOption.findByName(move).equals(information.get(position))) {
+            return true;
+        }
+        return false;
+    }
+
     public int getLength() {
         return length;
     }
