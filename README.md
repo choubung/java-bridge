@@ -5,8 +5,8 @@
 ### 1. 입출력 (View)
 - [ ] **입력**
   - [X] 다리 길이
-  - [ ] 이동할 칸 선택 (위 또는 아래 / U or D)
-  - [ ] 재시작/종료 여부 입력 (R/Q)
+  - [X] 이동할 칸 선택 (위 또는 아래 / U or D)
+  - [X] 재시작/종료 여부 입력 (R/Q)
 - [ ] **출력**
   - [ ] 게임 시작 문구
   - [ ] 다리 이동 시마다
@@ -30,7 +30,8 @@
 
 - [ ] **입력 유효성 검증**
   - [X] [예외] 다리 길이가 3~20 범위가 아니면 예외처리 (Validator/parseBridgeLength)
-  - [ ] [예외] 이동 칸 입력이 U 또는 D가 아니면 예외처리 (Validator/validateIsOption)
+  - [X] [예외] 이동 칸 입력이 U 또는 D가 아니면 예외처리 (Validator/validateIsOption)
+  - [X] [예외] 재시작 여부 입력이 R 또는 Q가 아니면 예외처리 (Validator/validateIsCommand)
 - [ ] **비즈니스 규칙 검증**
   - [ ] [예외] 
 

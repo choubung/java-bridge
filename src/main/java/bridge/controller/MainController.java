@@ -37,6 +37,7 @@ public class MainController {
                 // move
             // 틀리면
                 // 재시작
+                String command = inputView.readGameCommand();
     }
 
     private void endGame() {
