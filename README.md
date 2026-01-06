@@ -28,7 +28,7 @@
 ### 3. 예외 처리 (Exception)
 > 모든 예외는 `IllegalArgumentException`을 발생시키며, `[ERROR]`로 시작하는 메시지를 출력한다.
 
-- [ ] **입력 유효성 검증**
+- [ ] **입력 유효성 검증** (테스트 작성 완료 (3/3))
   - [X] [예외] 다리 길이가 3~20 범위가 아니면 예외처리 (Validator/parseBridgeLength)
   - [X] [예외] 이동 칸 입력이 U 또는 D가 아니면 예외처리 (Validator/validateIsOption)
   - [X] [예외] 재시작 여부 입력이 R 또는 Q가 아니면 예외처리 (Validator/validateIsCommand)
