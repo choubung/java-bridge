@@ -25,7 +25,7 @@ public class MainController {
     }
 
     private void startGame() {
-
+        int bridgeLen = inputView.readBridgeSize();
     }
 
     private void playGame() {
