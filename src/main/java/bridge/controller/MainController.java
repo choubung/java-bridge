@@ -5,16 +5,18 @@ import bridge.view.InputView;
 import bridge.view.OutputView;
 
 public class MainController {
+    private final BridgeGame bridgeGame;
     private final InputView inputView;
     private final OutputView outputView;
 
     public MainController(BridgeGame bridgeGame) {
+        this.bridgeGame = bridgeGame;
         this.inputView = new InputView();
         this.outputView = new OutputView();
     }
 
     public void run() {
-        // TODO: 1. 다리 길이 입력 받기
+        // 1. 다리 길이 입력 받기
         retryUntilValid(this::startGame);
 
         // TODO: 2. Play Game (이동할 칸 선택 (반복) + 결과 출력 + 재시도/종료 여부 입력)
@@ -26,6 +28,8 @@ public class MainController {
 
     private void startGame() {
         int bridgeLen = inputView.readBridgeSize();
+
+        bridgeGame.initializeGame(bridgeLen);
     }
 
     private void playGame() {

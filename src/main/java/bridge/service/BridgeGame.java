@@ -14,7 +14,7 @@ public class BridgeGame {
     private int position; // 현재 위치(길이)
 
     public void initializeGame(int bridgeLength) {
-        // 정답 bridge 생성
+        this.bridge = new Bridge(bridgeLength);
     }
 
     public boolean canPlayTurn(String move) {

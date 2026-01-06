@@ -1,19 +1,35 @@
 package bridge.domain;
 
+import bridge.utils.BridgeRandomNumberGenerator;
+
 import java.util.ArrayList;
 
 public class Bridge {
-    // int 다리 길이
-    // ArrayList<BridgeOption> 건널 수 있는 칸 정보
+    private static final BridgeRandomNumberGenerator bridgeRandomNumberGenerator = new BridgeRandomNumberGenerator();
+    private int length;
+    private ArrayList<BridgeOption> information;
 
     public Bridge(int length) {
-        // 길이 초기화
-        // 건널 수 있는 칸 초기화 = 건널 수 있는 칸 정보 메이킹 메소드 호츨
+        this.length = length;
+        this.information = initializeBridge();
     }
 
-    // TODO: 건널 수 있는 칸 초기화 메소드
+    // 건널 수 있는 칸 초기화 메소드
     private ArrayList<BridgeOption> initializeBridge() {
-        // 브릿지 넘버 제너레이터로 다리 만들기
-        return new ArrayList<BridgeOption>();
+        ArrayList<BridgeOption> information = new ArrayList<>();
+
+        for (int i = 0; i < length; i++) {
+            BridgeOption option = BridgeOption.findByDirection(bridgeRandomNumberGenerator.generate());
+            information.add(option);
+        }
+        return information;
+    }
+
+    public int getLength() {
+        return length;
+    }
+
+    public ArrayList<BridgeOption> getInformation() {
+        return information;
     }
 }
