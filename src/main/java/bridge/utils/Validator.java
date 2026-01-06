@@ -7,6 +7,7 @@ import java.util.regex.Pattern;
 
 public class Validator {
     private static final Pattern NUMBER_PATTERN = Pattern.compile("^[0-9]*$");
+    private static final Pattern BRIDGE_OPTION_PATTERN = Pattern.compile("[U | D]");
 
     public static int parseBridgeLength(String input) {
         try {
@@ -19,6 +20,12 @@ public class Validator {
             return len;
         } catch (NumberFormatException e) {
             throw new IllegalArgumentException("3 이상 20 이하의 숫자만 입력 가능합니다.");
+        }
+    }
+
+    public static void validateIsOption(String input) {
+        if (!BRIDGE_OPTION_PATTERN.matcher(input).matches()) {
+            throw new IllegalArgumentException("U 또는 D를 입력해야 합니다.");
         }
     }
 

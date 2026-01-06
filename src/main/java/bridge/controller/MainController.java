@@ -30,6 +30,7 @@ public class MainController {
 
     private void playGame() {
         // 선택
+        String move = inputView.readMoving();
 
         // 선택이 옳은지 판별해서
             // 옳으면

@@ -17,7 +17,7 @@ public class BridgeGame {
         // 정답 bridge 생성
     }
 
-    public boolean canPlayTurn(BridgeOption bridgeOption) {
+    public boolean canPlayTurn(String move) {
         // isCorrect로 플레이 가능 여부 판별
         return false;
     }
