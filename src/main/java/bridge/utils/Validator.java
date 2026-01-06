@@ -19,7 +19,7 @@ public class Validator {
             }
 
             return len;
-        } catch (NumberFormatException e) {
+        } catch (Exception e) {
             throw new IllegalArgumentException("3 이상 20 이하의 숫자만 입력 가능합니다.");
         }
     }
