@@ -22,7 +22,7 @@ public class MainController {
         // 2. Play Game (이동할 칸 선택 (반복) + 결과 출력 + 재시도/종료 여부 입력)
         retryUntilValid(this::playGame);
 
-        // TODO: 3. 최종 게임 결과 출력
+        // 3. 최종 게임 결과 출력
         retryUntilValid(this::endGame);
     }
 
@@ -33,7 +33,7 @@ public class MainController {
     }
 
     private void playGame() {
-        while(true) {
+        while(!bridgeGame.isReachedEnd()) {
             String move = inputView.readMoving();
             boolean isGameOver = !bridgeGame.move(move);
 
@@ -51,7 +51,7 @@ public class MainController {
     }
 
     private void endGame() {
-
+        outputView.printResult(bridgeGame.makeBridgeImage(), bridgeGame.getTryTimes(), bridgeGame.getWin());
     }
 
     private <T> T retryUntilValid(java.util.function.Supplier<T> supplier) {

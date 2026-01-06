@@ -6,14 +6,13 @@ import bridge.domain.BridgeOption;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * 다리 건너기 게임을 관리하는 클래스
- */
 public class BridgeGame {
     private Bridge bridge;
     private int position = 0; // 현재 위치(길이)
     private List<BridgeOption> userMoves = new ArrayList<>();
     private StringBuilder sb;
+    private String win = "성공";
+    private int tryTimes = 1;
 
     public void initializeGame(int bridgeLength) {
         this.bridge = new Bridge(bridgeLength);
@@ -21,15 +20,19 @@ public class BridgeGame {
 
     public boolean move(String move) {
         userMoves.add(BridgeOption.findByName(move));
+        position++;
 
-        if (bridge.isCorrect(move, position)) {
+        if (bridge.isCorrect(move, position-1)) {
             return true;
         }
 
+        win = "실패";
         return false;
     }
 
     public void retry() {
+        win = "성공";
+        tryTimes++;
         userMoves.clear();
     }
 
@@ -42,6 +45,14 @@ public class BridgeGame {
         return bridgeImage;
     }
 
+    public boolean isReachedEnd() {
+        if (position == bridge.getLength()) {
+            return true;
+        }
+
+        return false;
+    }
+
     private String makeBridgeImage(BridgeOption upOrDown) {
         sb = new StringBuilder();
         sb.append("[");
@@ -51,22 +62,31 @@ public class BridgeGame {
             if (i != 0) {
                 sb.append("|");
             }
-            sb.append(compareBridge(userOption, upOrDown, i));
+            compareBridge(userOption, upOrDown, i);
         }
 
-        sb.append("]\n");
+        sb.append("]");
         return sb.toString();
     }
 
-    private String compareBridge(BridgeOption userOption, BridgeOption upOrDown, int i) {
+    private void compareBridge(BridgeOption userOption, BridgeOption upOrDown, int i) {
         if (userOption.equals(upOrDown)){
-            if (userOption.equals(bridge.isCorrect(userOption.getName(), i))){
-                return sb.append(" ").append("O").append(" ").toString();
+            if (bridge.isCorrect(userOption.getName(), i)){
+                sb.append(" ").append("O").append(" ");
+                return;
             }
 
-            return sb.append(" ").append("X").append(" ").toString();
+            sb.append(" ").append("X").append(" ");
+            return;
         }
+        sb.append(" ").append(" ").append(" ");
+    }
 
-        return sb.toString();
+    public int getTryTimes() {
+        return tryTimes;
+    }
+
+    public String getWin() {
+        return win;
     }
 }
